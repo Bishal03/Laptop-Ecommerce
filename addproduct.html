@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Add Product</title>
+    <script>
+      var ck_name = /^[A-Za-z._-]{1,20}$/; var ck_category = /^[A-Za-z._-]{1,20}$/;
+      var ck_desc = /^[A-Za-z0-9!@#$%^&*()_]{50,1000}$/; var ck_file = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+      
+      function validate(form){
+      var name = form.name.value;
+      var category = form.category.value; var desc = form.desc.value;
+      var file = form.file.value; var errors = [];
+      if (!ck_name.test(name)) {
+      errors[errors.length] = "Enter valid product name .";
+      }
+      
+      if (!ck_category.test(category)) {
+      errors[errors.length] = "You must enter a valid category.";
+      }
+      
+      if (!ck_desc.test(desc)) {
+      errors[errors.length] = "Write minimum 50 character description.";
+      }
+      
+      if (!ck_file.test(file)) {
+      errors[errors.length] = "Please choose a header photo.";
+      }
+      
+      if (errors.length > 0) { reportErrors(errors); return false;
+      }
+      
+      return true;
+      }
+      
+      function reportErrors(errors){
+       
+      
+      var msg = "Please Enter Valide Data...\n"; for (var i = 0; i<errors.length; i++) {
+      var numError = i + 1;
+      msg += "\n" + numError + ". " + errors[i];
+      }
+      alert(msg);
+      }
+      </script>
+      
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  </head>
+  <body>
+    <!-- Navbar start -->
+    <header>
+        
+           
+          
+        <nav class="navbar navbar-light" style="background-color: orange;">
+            <div class="container">
+              <a style="font-size: xx-large; color: snow; " class="navbar-brand" href="index.html">LAPTOP E-COMMERCE<b style="color: black;"> </b></a>
+
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-primary" type="submit">Search</button>
+
+                    <a href="#"><img id="cart" src="images/Cart.png" alt=""></a>
+
+                    <a href="login.html"><img id="admin" src="images/Admin.png" alt="" srcset=""></a>
+                </form>
+            </div>
+
+
+        </nav>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navmenu">
+          <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Product</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="category.html" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Category
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="category.html">All</a></li>
+                    <li><a class="dropdown-item" href="#">Professional</a></li>
+                    <li><a class="dropdown-item" href="#">Gamer</a></li>   
+                    <li><a class="dropdown-item" href="#">Creator</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+                
+              </ul>
+              
+            </div>
+          </div>
+        </nav>
+    </header>
+
+<!-- Navbar End -->
+
+<!-- Main Body Start -->
+<main>
+    <h3 class="my-5 container h-100"><u>Add Product </u></h3>
+
+    <div class="container h-100"> 
+        <div class="row h-100 justify-content-center align-items-center"> 
+
+          <form 
+                class="mx-5 container form col-md-6" autocomplete="off"
+          method="post" action="index.html" onSubmit="return validate(this);" name="form">
+          
+          <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Enter Name</label>
+          <input type="text" class="form-control" name="name" id="exampleFormControlInput1" placeholder="Enter Name" >
+          </div>
+          
+          <div class="mb-3 ">
+          <label for="exampleFormControlInput1" class="form-label">Enter Category</label>
+          <input type="text" class="form-control" name="category" id="exampleFormControlInput1" placeholder="Enter Category" >
+          </div>
+          
+          <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Enter Description</label>
+          <textarea class="form-control" name="desc" id="exampleFormControlTextarea1" rows="3" placeholder="Enter Description" ></textarea>
+          </div>
+          
+          <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Upload Product Image</label>
+          <input type="file" class="form-control" name="file" id="exampleFormControlInput1">
+          </div>
+          
+              <button type="submit" class="btn btn-primary ">Add Product</button>
+          </form>
+           
+          
+    </div>
+    </div>
+</main>
+<!-- Main Body End -->
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
